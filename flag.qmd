@@ -51,15 +51,15 @@ viewof selected = Inputs.select(transpose(countries), {
 ```
 
 ```{ojs}
-// Get the top 5 most similar flags for the selected country
-top5 = transpose(similarities)
+// Get the top 3 most similar flags for the selected country
+top3 = transpose(similarities)
   .filter(d => d.code1 === selected.code)
   .sort((a, b) => b.similarity_pct - a.similarity_pct)
-  .slice(0, 5)
+  .slice(0, 3)
 ```
 
 ```{ojs}
-// Display selected flag and its top 5 closest matches
+// Display selected flag and its top 3 closest matches
 html`
 <div style="margin-top: 1.5rem; margin-bottom: 2rem;">
   <h3>${selected.name}</h3>
@@ -67,9 +67,9 @@ html`
 </div>
 
 <div>
-  <h4>Top 5 Most Similar Flags</h4>
+  <h4>Top 3 Most Similar Flags</h4>
   <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1rem;">
-    ${top5.map(d => html`
+    ${top3.map(d => html`
       <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; width: 175px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); background-color: #f8fafc;">
         <img src="${d.path2}" alt="${d.name2}" style="width: 100%; height: 95px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background: white;" />
         <div style="font-weight: 600; font-size: 0.9rem; margin-top: 8px; color: #1e293b;">${d.name2}</div>
