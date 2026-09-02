@@ -7,6 +7,12 @@ execute:
   echo: false
 ---
 
+<style>
+body {
+  background-color: tan;
+}
+</style>
+
 ```{r}
 #| message: false
 #| warning: false
